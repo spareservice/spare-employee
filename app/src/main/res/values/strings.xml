@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">SpareService</string>
+    <string name="activity_inscription_nom_hint">Nom</string>
+    <string name="activity_connexion_email_hint">Email</string>
+    <string name="activity_connexion_subtitle">Bienvenue sur Spare Service\nConnectez vous</string>
+    <string name="activity_connexion_mdp_hint">Mot de passe</string>
+    <string name="activity_connexion_connect_button">Se connecter</string>
+    <string name="activity_connexion_mdp_oublie_button">Mot de passe oublié</string>
+    <string name="activity_connexion_inscrire_button">S\'inscrire</string>
+    <string name="activity_connexion_subtitleInscription">Vous n\'avez pas de compte ?</string>
+    <string name="activity_inscription_subtitle">Inscrivez-vous</string>
+    <string name="activity_inscription_prenom_hint">Prénom</string>
+    <string name="activity_inscription_email_hint">Email</string>
+    <string name="activity_inscription_mdp_hint">Mot de passe</string>
+    <string name="activity_inscription_confMdp_hint">Confirmation du mot de passe</string>
+    <string name="activity_inscription_tel_hint">Téléphone</string>
+    <string name="activity_navigation_reponse">Réponses</string>
+    <string name="activity_navigation_demande">Demandes</string>
+    <string name="activity_navigation_accueil">Page d\'accueil</string>
+</resources>
