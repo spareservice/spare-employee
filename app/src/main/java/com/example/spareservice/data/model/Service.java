@@ -1,6 +1,8 @@
 package com.example.spareservice.data.model;
 
-public class Service {
+import java.io.Serializable;
+
+public class Service implements Serializable {
     private String nomService;
     private String typeService;
 

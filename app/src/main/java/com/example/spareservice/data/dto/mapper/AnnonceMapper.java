@@ -7,21 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnnonceMapper {
-    public static List<Annonce> map(List<AnnonceDTO> weaponDTOList) {
-        List<Annonce> weaponList = new ArrayList<>();
-        for (AnnonceDTO weaponDTO : weaponDTOList) {
-            weaponList.add(map(weaponDTO));
+    public static List<Annonce> map(List<AnnonceDTO> annonceDTOList) {
+        List<Annonce> annonceList = new ArrayList<>();
+        for (AnnonceDTO annonceDTO : annonceDTOList) {
+            annonceList.add(map(annonceDTO));
         }
-        return weaponList;
+        return annonceList;
     }
 
-    private static Annonce map(AnnonceDTO weaponDTO) {
-        Annonce weapon = new Annonce();
+    private static Annonce map(AnnonceDTO annonceDTO) {
+        Annonce annonce = new Annonce();
 
-        weapon.setIdClient(weaponDTO.getIdClient());
-        weapon.setIdService(weaponDTO.getIdService());
-        weapon.setDescriptionAnnonce(weaponDTO.getDescriptionAnnonce());
-        weapon.setDetailAnnonce(weaponDTO.getDetailAnnonce());
-        return weapon;
+        annonce.setIdClient(annonceDTO.getIdClient());
+        annonce.setIdService(annonceDTO.getIdService());
+        annonce.setDescriptionAnnonce(annonceDTO.getDescriptionAnnonce());
+        annonce.setDetailAnnonce(annonceDTO.getDetailAnnonce());
+        return annonce;
     }
 }

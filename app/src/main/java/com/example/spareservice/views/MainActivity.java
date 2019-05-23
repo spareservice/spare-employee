@@ -31,5 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private void navigateToHome() {
         Intent intent = new Intent(this, ConnexionActivity.class);
         startActivity(intent);
+        finish();
     }
 }

@@ -2,13 +2,11 @@ package com.example.spareservice.data.dto;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PrestataireDTO {
+public class ClientDTO {
     @SerializedName("nom") private String nom;
     @SerializedName("prenom") private String prenom;
     @SerializedName("email") private String email;
-    @SerializedName("mdp") private String mdp;
     @SerializedName("tel") private String tel;
-
 
     public String getNom() {
         return nom;
@@ -34,14 +32,6 @@ public class PrestataireDTO {
         this.email = email;
     }
 
-    public String getMdp() {
-        return mdp;
-    }
-
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
-    }
-
     public String getTel() {
         return tel;
     }
@@ -52,11 +42,10 @@ public class PrestataireDTO {
 
     @Override
     public String toString() {
-        return "PrestataireDTO{" +
+        return "ClientDTO{" +
                 "nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", email='" + email + '\'' +
-                ", mdp='" + mdp + '\'' +
                 ", tel='" + tel + '\'' +
                 '}';
     }

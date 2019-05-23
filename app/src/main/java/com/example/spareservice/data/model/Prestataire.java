@@ -6,7 +6,7 @@ public class Prestataire {
     private String email;
     private String mdp;
     private String tel;
-    private String salaire;
+
 
     public String getNom() {
         return nom;
@@ -48,14 +48,6 @@ public class Prestataire {
         this.tel = tel;
     }
 
-    public String getSalaire() {
-        return salaire;
-    }
-
-    public void setSalaire(String salaire) {
-        this.salaire = salaire;
-    }
-
     @Override
     public String toString() {
         return "Prestataire{" +
@@ -64,7 +56,6 @@ public class Prestataire {
                 ", email='" + email + '\'' +
                 ", mdp='" + mdp + '\'' +
                 ", tel='" + tel + '\'' +
-                ", salaire='" + salaire + '\'' +
                 '}';
     }
 }

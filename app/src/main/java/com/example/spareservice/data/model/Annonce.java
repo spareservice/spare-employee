@@ -1,6 +1,8 @@
 package com.example.spareservice.data.model;
 
-public class Annonce {
+import java.io.Serializable;
+
+public class Annonce implements Serializable {
     private String idClient;
     private String idService;
     private String descriptionAnnonce;

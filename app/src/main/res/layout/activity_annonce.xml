@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.AnnonceActivity">
+
+    <ImageView
+        android:id="@+id/activity_annonce_logo_image"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/spareservicelogomini"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/activity_annonce_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/activity_annonce_logo_image"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        tools:text="Title"
+    />
+
+    <TextView
+        android:id="@+id/activity_annonce_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/activity_annonce_title"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        tools:text="Subtitle"
+        />
+
+    <TextView
+        android:id="@+id/activity_annonce_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/activity_annonce_subtitle"
+        android:textSize="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:textColor="@color/colorAccent"
+        tools:text="Description"
+        />
+
+    <TextView
+        android:id="@+id/activity_annonce_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/activity_annonce_description"
+        android:textSize="25dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        tools:text="Detail"
+        />
+
+
+
+</android.support.constraint.ConstraintLayout>
