@@ -1,12 +1,26 @@
 package com.example.spareservice.data.dto;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import de.undercouch.bson4jackson.types.ObjectId;
+
+
 public class AnnonceDTO {
+    @SerializedName("_id") private String idAnnonce;
     @SerializedName("idClient") private String idClient;
     @SerializedName("idService") private String idService;
     @SerializedName("descriptionAnnonce") private String descriptionAnnonce;
     @SerializedName("detailAnnonce") private String detailAnnonce;
+
+    public String getIdAnnonce() {
+        return idAnnonce;
+    }
+
+    public void setIdAnnonce(String idAnnonce) {
+        this.idAnnonce = idAnnonce;
+    }
 
     public String getIdService() {
         return idService;
@@ -43,10 +57,11 @@ public class AnnonceDTO {
     @Override
     public String toString() {
         return "AnnonceDTO{" +
-                "idClient='" + idClient + '\'' +
-                ", isService='" + idService + '\'' +
+                "idAnnonce='" + idAnnonce + '\'' +
+                ", idClient='" + idClient + '\'' +
+                ", idService='" + idService + '\'' +
                 ", descriptionAnnonce='" + descriptionAnnonce + '\'' +
-                ", detailPrestataire='" + detailAnnonce + '\'' +
+                ", detailAnnonce='" + detailAnnonce + '\'' +
                 '}';
     }
 }

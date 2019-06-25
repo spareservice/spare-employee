@@ -19,11 +19,15 @@ public class PrestataireMapper {
 
     private static Prestataire map(PrestataireDTO annonceDTO) {
         Prestataire annonce = new Prestataire();
-
+        annonce.setIdPrestataire(annonceDTO.getIdPrestataire());
         annonce.setNom(annonceDTO.getNom());
         annonce.setPrenom(annonceDTO.getPrenom());
         annonce.setEmail(annonceDTO.getEmail());
         annonce.setTel(annonceDTO.getTel());
+        annonce.setAdresse(annonceDTO.getAdresse());
+        annonce.setCp(annonceDTO.getCp());
+        annonce.setVille(annonceDTO.getVille());
+        annonce.setService(annonceDTO.getService());
         return annonce;
     }
 }

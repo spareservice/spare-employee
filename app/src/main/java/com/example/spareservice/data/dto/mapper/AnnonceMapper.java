@@ -17,7 +17,7 @@ public class AnnonceMapper {
 
     private static Annonce map(AnnonceDTO annonceDTO) {
         Annonce annonce = new Annonce();
-
+        annonce.setIdAnnonce(annonceDTO.getIdAnnonce());
         annonce.setIdClient(annonceDTO.getIdClient());
         annonce.setIdService(annonceDTO.getIdService());
         annonce.setDescriptionAnnonce(annonceDTO.getDescriptionAnnonce());

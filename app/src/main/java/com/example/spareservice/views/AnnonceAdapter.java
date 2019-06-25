@@ -86,6 +86,6 @@ public class AnnonceAdapter extends RecyclerView.Adapter<AnnonceAdapter.WeaponVi
     }
 
     public interface ItemClickListener {
-        void onClick(Annonce weapon);
+        void onClick(Annonce annonce);
     }
 }

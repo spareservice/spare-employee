@@ -3,10 +3,19 @@ package com.example.spareservice.data.dto;
 import com.google.gson.annotations.SerializedName;
 
 public class ClientDTO {
+    @SerializedName("_id") private String idClient;
     @SerializedName("nom") private String nom;
     @SerializedName("prenom") private String prenom;
     @SerializedName("email") private String email;
     @SerializedName("tel") private String tel;
+
+    public String getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(String idClient) {
+        this.idClient = idClient;
+    }
 
     public String getNom() {
         return nom;

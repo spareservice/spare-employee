@@ -1,70 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".views.AnnonceActivity">
+    tools:context=".views.AnnonceResumeActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/activity_annonce_logo_image"
+            android:id="@+id/activity_annonce_resume_logo_image"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/spareservicelogomini"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_gravity="center_horizontal" />
 
         <TextView
-            android:id="@+id/activity_annonce_title"
+            android:id="@+id/activity_annonce_resume_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/activity_annonce_logo_image"
+            app:layout_constraintTop_toBottomOf="@id/activity_annonce_resume_logo_image"
             android:textSize="50dp"
             android:gravity="center"
             android:textColor="@color/colorAccent"
             tools:text="Title"
-        />
+            />
 
         <TextView
-            android:id="@+id/activity_annonce_subtitle"
+            android:id="@+id/activity_annonce_resume_subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/activity_annonce_title"
-            android:textSize="35dp"
+            app:layout_constraintTop_toBottomOf="@id/activity_annonce_resume_title"
+            android:textSize="50dp"
             android:gravity="center"
             android:textColor="@color/colorAccent"
             tools:text="Subtitle"
             />
 
         <TextView
-            android:id="@+id/activity_annonce_description_title"
+            android:id="@+id/activity_annonce_resume_description_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/activity_annonce_subtitle"
+            app:layout_constraintTop_toBottomOf="@id/activity_annonce_resume_subtitle"
             android:textSize="25dp"
             android:gravity="center"
             android:layout_marginTop="25dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:textColor="@color/colorForestGreen"
-            android:text="@string/activity_annonce_description_title"
+            android:text="@string/activity_annonce_resume_description_title"
             />
 
         <TextView
-            android:id="@+id/activity_annonce_description"
+            android:id="@+id/activity_annonce_resume_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/activity_annonce_description_title"
+            app:layout_constraintTop_toBottomOf="@id/activity_annonce_resume_description_title"
             android:textSize="25dp"
             android:gravity="center"
             android:layout_marginTop="10dp"
@@ -76,22 +73,22 @@
 
 
         <TextView
-            android:id="@+id/activity_annonce_detail_title"
+            android:id="@+id/activity_annonce_resume_detail_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/activity_annonce_description"
+            app:layout_constraintTop_toBottomOf="@id/activity_annonce_resume_description"
             android:textSize="25dp"
             android:layout_marginTop="25dp"
             android:gravity="center"
             android:textColor="@color/colorForestGreen"
-            android:text="@string/activity_annonce_detail_title"
+            android:text="@string/activity_annonce_resume_detail_title"
             />
 
         <TextView
-            android:id="@+id/activity_annonce_detail"
+            android:id="@+id/activity_annonce_resume_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/activity_annonce_detail_title"
+            app:layout_constraintTop_toBottomOf="@id/activity_annonce_resume_detail_title"
             android:textSize="25dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
@@ -99,8 +96,30 @@
             tools:text="Detail"
             />
 
+        <TextView
+            android:id="@+id/activity_annonce_resume_horaire_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="@color/colorForestGreen"
+            android:text="@string/activity_annonce_resume_horaire_title"
+            app:layout_constraintTop_toBottomOf="@id/activity_annonce_resume_detail"/>
+
+        <TextView
+            android:id="@+id/activity_annonce_resume_horaire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            tools:text="Detail Horaire"
+            app:layout_constraintTop_toBottomOf="@id/activity_annonce_resume_horaire_title"/>
+
         <Button
-            android:id="@+id/activity_annonce_postuler_btn"
+            android:id="@+id/activity_annonce_resumer_finaliser_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -109,8 +128,8 @@
             android:layout_marginBottom="20dp"
             android:textStyle="bold"
             android:background="@drawable/boundedbtn"
-            android:text="@string/activity_annonce_postuler_button"
-            app:layout_constraintTop_toBottomOf="@id/activity_annonce_detail"
+            android:text="Finaliser"
+            app:layout_constraintTop_toBottomOf="@id/activity_annonce_resume_horaire"
             app:layout_constraintBottom_toBottomOf="parent"
             />
 

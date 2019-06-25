@@ -18,7 +18,7 @@ public class ClientMapper {
 
     private static Client map(ClientDTO annonceDTO) {
         Client annonce = new Client();
-
+        annonce.setIdClient(annonceDTO.getIdClient());
         annonce.setNom(annonceDTO.getNom());
         annonce.setPrenom(annonceDTO.getPrenom());
         annonce.setEmail(annonceDTO.getEmail());

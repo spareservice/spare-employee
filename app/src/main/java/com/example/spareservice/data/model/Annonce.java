@@ -2,11 +2,22 @@ package com.example.spareservice.data.model;
 
 import java.io.Serializable;
 
+
 public class Annonce implements Serializable {
+
+    private String idAnnonce;
     private String idClient;
     private String idService;
     private String descriptionAnnonce;
     private String detailAnnonce;
+
+    public String getIdAnnonce() {
+        return idAnnonce;
+    }
+
+    public void setIdAnnonce(String idAnnonce) {
+        this.idAnnonce = idAnnonce;
+    }
 
     public String getIdClient() {
         return idClient;
@@ -43,7 +54,8 @@ public class Annonce implements Serializable {
     @Override
     public String toString() {
         return "Annonce{" +
-                "idClient='" + idClient + '\'' +
+                "idAnnonce='" + idAnnonce + '\'' +
+                ", idClient='" + idClient + '\'' +
                 ", idService='" + idService + '\'' +
                 ", descriptionAnnonce='" + descriptionAnnonce + '\'' +
                 ", detailAnnonce='" + detailAnnonce + '\'' +

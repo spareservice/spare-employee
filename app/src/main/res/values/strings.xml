@@ -17,4 +17,25 @@
     <string name="activity_navigation_reponse">Réponses</string>
     <string name="activity_navigation_demande">Demandes</string>
     <string name="activity_navigation_accueil">Page d\'accueil</string>
+    <string name="activity_inscription_adresse_hint">N° + Adresse</string>
+    <string name="activity_annonce_postuler_button">Postuler</string>
+    <string name="activity_annonce_description_title">Description de l\'annonce</string>
+    <string name="activity_annonce_detail_title">Detail Client</string>
+    <string name="activity_annonce_resume_description_title">Description de l\'annonce</string>
+    <string name="activity_annonce_resume_detail_title">Detail Client</string>
+    <string name="activity_annonce_resume_horaire_title">Horaire</string>
+    <string name="title_activity_slide_nav_bar">SlideNavBarActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
 </resources>

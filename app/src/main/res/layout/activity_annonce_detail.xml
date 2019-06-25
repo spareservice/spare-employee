@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.AnnonceDetailActivity">
+
+    <ImageView
+        android:id="@+id/activity_annonce_detail_logo_image"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/activity_annonce_detail_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        tools:text="date"
+        android:textSize="25dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/activity_annonce_detail_logo_image"/>
+
+    <Button
+        android:id="@+id/activity_annonce_detail_date_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/boundedbtn"
+        android:text="Choisir une date"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/activity_annonce_detail_date"
+        />
+    <TextView
+        android:id="@+id/activity_annonce_detail_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        tools:text="heur"
+        android:textSize="25dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/activity_annonce_detail_date_btn"/>
+
+    <Button
+        android:id="@+id/activity_annonce_detail_time_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/boundedbtn"
+        android:text="Choisir une heure"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/activity_annonce_detail_time"/>
+
+    <Button
+        android:id="@+id/activity_annonce_detail_confirmer_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/boundedbtn"
+        android:text="Confirmer"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/activity_annonce_detail_time_btn"/>
+
+
+</android.support.constraint.ConstraintLayout>
