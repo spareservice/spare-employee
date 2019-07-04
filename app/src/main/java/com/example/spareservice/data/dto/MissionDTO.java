@@ -3,9 +3,9 @@ package com.example.spareservice.data.dto;
 import com.google.gson.annotations.SerializedName;
 
 public class MissionDTO {
-    @SerializedName("idAnnonce") private String idAnnonce;
-    @SerializedName("idPrestataire") private String idPrestataire;
-    @SerializedName("idClient") private String idClient;
+    @SerializedName("_idAnnonce") private String idAnnonce;
+    @SerializedName("_idPrestataire") private String idPrestataire;
+    @SerializedName("_idClient") private String idClient;
     @SerializedName("debutDate") private String debutDate;
     @SerializedName("debutHeure") private String debutHeure;
     @SerializedName("isValide") private boolean isValide;

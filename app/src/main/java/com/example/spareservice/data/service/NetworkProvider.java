@@ -124,8 +124,8 @@ public class NetworkProvider {
         });
     }
 
-    public void addMission(String idAnnonce, String idPrestataire, String idClient, String debutDate, String debutHeure, boolean isValide, boolean inProcess, Listener<List<Mission>> listener) {
-        mySpareService.ajoutMission(idAnnonce, idPrestataire, idClient, debutDate, debutHeure, isValide, inProcess).enqueue(new Callback<List<MissionDTO>>() {
+    public void addMission(String idAnnonce, String idPrestataire, String idClient, String debutDate, String debutHeure, String infoPrestataire, boolean isValide, boolean inProcess, Listener<List<Mission>> listener) {
+        mySpareService.ajoutMission(idAnnonce, idPrestataire, idClient, debutDate, debutHeure, infoPrestataire, isValide, inProcess).enqueue(new Callback<List<MissionDTO>>() {
             @Override
             public void onResponse(Call<List<MissionDTO>> call, Response<List<MissionDTO>> response) {
                 List<MissionDTO> missionDTOList = response.body();

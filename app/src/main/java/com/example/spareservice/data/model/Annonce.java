@@ -10,6 +10,8 @@ public class Annonce implements Serializable {
     private String idService;
     private String descriptionAnnonce;
     private String detailAnnonce;
+    private String debutDate;
+    private String debutHeure;
 
     public String getIdAnnonce() {
         return idAnnonce;
@@ -51,6 +53,22 @@ public class Annonce implements Serializable {
         this.detailAnnonce = detailAnnonce;
     }
 
+    public String getDebutDate() {
+        return debutDate;
+    }
+
+    public void setDebutDate(String debutDate) {
+        this.debutDate = debutDate;
+    }
+
+    public String getDebutHeure() {
+        return debutHeure;
+    }
+
+    public void setDebutHeure(String debutHeure) {
+        this.debutHeure = debutHeure;
+    }
+
     @Override
     public String toString() {
         return "Annonce{" +
@@ -59,6 +77,8 @@ public class Annonce implements Serializable {
                 ", idService='" + idService + '\'' +
                 ", descriptionAnnonce='" + descriptionAnnonce + '\'' +
                 ", detailAnnonce='" + detailAnnonce + '\'' +
+                ", debutDate='" + debutDate + '\'' +
+                ", debutHeure='" + debutHeure + '\'' +
                 '}';
     }
 }

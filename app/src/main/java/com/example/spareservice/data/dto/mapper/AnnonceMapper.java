@@ -22,6 +22,8 @@ public class AnnonceMapper {
         annonce.setIdService(annonceDTO.getIdService());
         annonce.setDescriptionAnnonce(annonceDTO.getDescriptionAnnonce());
         annonce.setDetailAnnonce(annonceDTO.getDetailAnnonce());
+        annonce.setDebutDate(annonceDTO.getDebutDate());
+        annonce.setDebutHeure(annonceDTO.getDebutHeure());
         return annonce;
     }
 }

@@ -67,7 +67,7 @@ public class AnnonceActivity extends AppCompatActivity {
         title.setText(serviceType);
         subtitle.setText(serviceNom);
         description.setText(annonce.getDescriptionAnnonce());
-        detail.setText(client.getNom() + "\n" + client.getPrenom() + "\n" + client.getEmail() + "\n" + annonce.getDetailAnnonce() + "\n" + client.getTel());
+        detail.setText(client.getNom() + "\n" + client.getPrenom() + "\n" + client.getEmail() + "\n\n" + client.getTel() + "\n\n" + annonce.getDetailAnnonce() + "\n" );
 
         postulerBtn.setOnClickListener(new View.OnClickListener() {
             @Override

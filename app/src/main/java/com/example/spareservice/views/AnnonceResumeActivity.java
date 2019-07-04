@@ -38,6 +38,8 @@ public class AnnonceResumeActivity extends AppCompatActivity {
     TextView detailTextView;
     @BindView(R.id.activity_annonce_resume_horaire)
     TextView horaireTextView;
+    @BindView(R.id.activity_annonce_resume_info)
+    TextView infoTextView;
     @BindView(R.id.activity_annonce_resumer_finaliser_btn)
     Button finaliserBtn;
 
@@ -61,22 +63,23 @@ public class AnnonceResumeActivity extends AppCompatActivity {
         String serviceNom = intent.getStringExtra("serviceNom");
         String serviceType = intent.getStringExtra("serviceType");
         String idPrestataire = intent.getStringExtra("idPrestataire");
-        String date = intent.getStringExtra("date");
-        String time = intent.getStringExtra("time");
+        String infoPrestataire = intent.getStringExtra("info");
 
         Glide.with(AnnonceResumeActivity.this).load(R.drawable.spareservicelogomini).into(imageLogo);
 
         titleTextView.setText("Résumé");
         descriptionTextView.setText(serviceNom + "\n" + serviceType + "\n" + annonce.getDescriptionAnnonce());
         detailTextView.setText(client.getNom() + "\n" + client.getPrenom() + "\n" + client.getEmail() + "\n" + annonce.getDetailAnnonce() + "\n" + client.getTel());
-        horaireTextView.setText(date + "\n" + time);
+        horaireTextView.setText(annonce.getDebutDate() + "\n" + annonce.getDebutHeure());
+        infoTextView.setText(infoPrestataire);
 
         finaliserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NetworkProvider.getInstance().addMission(annonce.getIdAnnonce(), idPrestataire, client.getIdClient(), date, time, false, false, new NetworkProvider.Listener<List<Mission>>() {
+                NetworkProvider.getInstance().addMission(annonce.getIdAnnonce(), idPrestataire, client.getIdClient(), annonce.getDebutDate(), annonce.getDebutHeure(), infoPrestataire, false, false, new NetworkProvider.Listener<List<Mission>>() {
                     @Override
                     public void onSuccess(List<Mission> data) {
+
                         new AlertDialog.Builder(AnnonceResumeActivity.this)
                                 .setTitle("Posté")
                                 .setMessage("Vous aurez une réponse d'ici sous peu")

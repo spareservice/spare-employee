@@ -52,6 +52,7 @@ public interface MySpareService {
                                            @Query("idClient") String idClient,
                                            @Query("debutDate") String debutDate,
                                            @Query("debutHeure") String debutHeure,
+                                           @Query("infoPrestataire") String infoPrestataire,
                                            @Query("isValide") boolean isValide,
                                            @Query("inProcess") boolean inProcess);
 }

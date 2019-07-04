@@ -13,6 +13,8 @@ public class AnnonceDTO {
     @SerializedName("idService") private String idService;
     @SerializedName("descriptionAnnonce") private String descriptionAnnonce;
     @SerializedName("detailAnnonce") private String detailAnnonce;
+    @SerializedName("debutDate") private String debutDate;
+    @SerializedName("debutHeure") private String debutHeure;
 
     public String getIdAnnonce() {
         return idAnnonce;
@@ -54,6 +56,22 @@ public class AnnonceDTO {
         this.detailAnnonce = detailAnnonce;
     }
 
+    public String getDebutDate() {
+        return debutDate;
+    }
+
+    public void setDebutDate(String debutDate) {
+        this.debutDate = debutDate;
+    }
+
+    public String getDebutHeure() {
+        return debutHeure;
+    }
+
+    public void setDebutHeure(String debutHeure) {
+        this.debutHeure = debutHeure;
+    }
+
     @Override
     public String toString() {
         return "AnnonceDTO{" +
@@ -62,6 +80,9 @@ public class AnnonceDTO {
                 ", idService='" + idService + '\'' +
                 ", descriptionAnnonce='" + descriptionAnnonce + '\'' +
                 ", detailAnnonce='" + detailAnnonce + '\'' +
+                ", debutDate='" + debutDate + '\'' +
+                ", debutHeure='" + debutHeure + '\'' +
                 '}';
     }
+
 }
