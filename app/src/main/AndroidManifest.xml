@@ -14,11 +14,11 @@
         <activity android:name=".views.AnnonceResumeActivity" />
         <activity android:name=".views.AnnonceDetailActivity" />
         <activity android:name=".views.AnnonceActivity" />
-        <activity android:name=".views.AccueilActivity" />
+        <activity android:name=".views.AccueilActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".views.InscriptionActivity" />
         <activity android:name=".views.ConnexionActivity" />
-        <activity android:name=".views.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

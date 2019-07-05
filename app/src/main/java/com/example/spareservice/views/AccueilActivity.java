@@ -1,10 +1,14 @@
 package com.example.spareservice.views;
 
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -36,6 +40,7 @@ public class AccueilActivity extends AppCompatActivity {
     ImageView imageView;
 
     private AnnonceAdapter annonceAdapter;
+    private DrawerLayout drawerLayout;
 
 
     @Override
@@ -43,6 +48,15 @@ public class AccueilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
         ButterKnife.bind(this);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         Glide.with(AccueilActivity.this).load(R.drawable.spareservicelogomini).into(imageView);
 
@@ -52,6 +66,15 @@ public class AccueilActivity extends AppCompatActivity {
 
         loadData();
         initRecyclerView(idPrestataire);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     private void loadData() {
