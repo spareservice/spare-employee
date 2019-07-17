@@ -4,26 +4,20 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.spareservice.R;
 import com.example.spareservice.data.model.Prestataire;
-import com.example.spareservice.data.model.Service;
 import com.example.spareservice.data.service.NetworkProvider;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,12 +46,8 @@ public class InscriptionActivity extends AppCompatActivity {
     EditText cpTextView;
     @BindView(R.id.activity_inscription_ville_edt)
     EditText villeTextView;
-    @BindView(R.id.activity_inscription_service_actv)
-    MultiAutoCompleteTextView serviceMactv;
     @BindView(R.id.activity_connexion_inscrire_btn)
     Button inscrireBtn;
-
-    public static final ArrayList<String> servicesList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,54 +57,44 @@ public class InscriptionActivity extends AppCompatActivity {
 
         Glide.with(InscriptionActivity.this).load(R.drawable.spareservicelogomini).into(logo);
 
-        NetworkProvider.getInstance().allService(new NetworkProvider.Listener<List<Service>>() {
-            @Override
-            public void onSuccess(List<Service> data) {
-                for(Service s : data) {
-                    servicesList.add(s.getNomService());
-                }
-            }
-
-            @Override
-            public void onError(Throwable t) {
-                Log.d("errorGettingAllService", t.getMessage());
-            }
-        });
-
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(InscriptionActivity.this, R.layout.simple_list_item_1, servicesList);
-        serviceMactv.setAdapter(adapter);
-        serviceMactv.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
-
-
         inscrireBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(InscriptionActivity.this, ConnexionActivity.class);
+            Intent intent = new Intent(InscriptionActivity.this, ContratActivity.class);
 
-            String services = serviceMactv.getText().toString();
+            if ((mdpEditText.getText().toString().equals(confMdpEditText.getText().toString()) && !mdpEditText.getText().toString().isEmpty())){
+                if(mdpEditText.getText().length() <= 5) {
+                    if (!validEmail(emailEditText.getText().toString())) {
+                        Toast.makeText(InscriptionActivity.this,"Entrer un email valide",Toast.LENGTH_LONG).show();
+                    } else {
+                        NetworkProvider.getInstance().addPrestataire(nomEditText.getText().toString(), prenomEditText.getText().toString(),
+                                emailEditText.getText().toString(), mdpEditText.getText().toString(),
+                                telEditText.getText().toString(), adresseTextView.getText().toString(),
+                                cpTextView.getText().toString(), villeTextView.getText().toString(), new NetworkProvider.Listener<List<Prestataire>>() {
+                                    @Override
+                                    public void onSuccess(List<Prestataire> data) {
+                                        startActivity(intent);
+                                        finish();
+                                    }
 
-
-            if (mdpEditText.getText().toString().equals(confMdpEditText.getText().toString())){
-
-                NetworkProvider.getInstance().addPrestataire(nomEditText.getText().toString(), prenomEditText.getText().toString(),
-                        emailEditText.getText().toString(), mdpEditText.getText().toString(),
-                        telEditText.getText().toString(), adresseTextView.getText().toString(),
-                        cpTextView.getText().toString(), villeTextView.getText().toString(),
-                        services, new NetworkProvider.Listener<List<Prestataire>>() {
-                    @Override
-                    public void onSuccess(List<Prestataire> data) {
-                        startActivity(intent);
+                                    @Override
+                                    public void onError(Throwable t) {
+                                        Log.d("errorAddingPrestataire", t.getMessage());
+                                    }
+                                });
                     }
-
-                    @Override
-                    public void onError(Throwable t) {
-                        Log.d("errorAddingPrestataire", t.getMessage());
-                    }
-                });
+                } else {
+                    Toast.makeText(InscriptionActivity.this,"Ajouter un mot de passe avec plus de 5 caractères",Toast.LENGTH_LONG).show();
+                }
             } else {
                 subtitleTextView.setText("Le mot de passe n'est pas identique");
+                Toast.makeText(InscriptionActivity.this,"Le mot de passe n'est pas identique",Toast.LENGTH_LONG).show();
                 subtitleTextView.setTextColor(getResources().getColor(R.color.colorError));
             }
 
         });
+    }
+
+    private boolean validEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 }

@@ -3,6 +3,7 @@ package com.example.spareservice.views;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,11 +35,15 @@ public class AnnonceDetailActivity extends AppCompatActivity {
     @BindView(R.id.activity_annonce_detail_confirmer_btn)
     Button confirmerBtn;
 
+    SharedPreferences prefs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_annonce_detail);
         ButterKnife.bind(this);
+
+        prefs = this.getSharedPreferences("preferences", MODE_PRIVATE);
 
         Intent intent = getIntent();
 
@@ -52,8 +57,8 @@ public class AnnonceDetailActivity extends AppCompatActivity {
 
         String serviceNom = intent.getStringExtra("serviceNom");
         String serviceType = intent.getStringExtra("serviceType");
-        String idPrestataire = intent.getStringExtra("idPrestataire");
-
+        //String idPrestataire = intent.getStringExtra("idPrestataire");
+        String idPresta = prefs.getString("idPrestataire", "none");
 
         Glide.with(AnnonceDetailActivity.this).load(R.drawable.spareservicelogomini).into(imageLogo);
 
@@ -64,7 +69,7 @@ public class AnnonceDetailActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(AnnonceDetailActivity.this, AnnonceResumeActivity.class);
                 intent1.putExtra("annonce", annonce);
                 intent1.putExtra("client", client);
-                intent1.putExtra("idPrestataire", idPrestataire);
+                intent1.putExtra("idPrestataire", idPresta);
                 intent1.putExtra("serviceNom", serviceNom);
                 intent1.putExtra("serviceType", serviceType);
                 intent1.putExtra("info", infoEdt.getText().toString());

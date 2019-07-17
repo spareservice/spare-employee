@@ -3,6 +3,7 @@ package com.example.spareservice.views;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class AnnonceResumeActivity extends AppCompatActivity {
     TextView infoTextView;
     @BindView(R.id.activity_annonce_resumer_finaliser_btn)
     Button finaliserBtn;
+    SharedPreferences prefs;
 
 
     @Override
@@ -49,6 +51,8 @@ public class AnnonceResumeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_annonce_resume);
         ButterKnife.bind(this);
+
+        prefs = this.getSharedPreferences("preferences", MODE_PRIVATE);
 
         Intent intent = getIntent();
 
@@ -62,8 +66,8 @@ public class AnnonceResumeActivity extends AppCompatActivity {
 
         String serviceNom = intent.getStringExtra("serviceNom");
         String serviceType = intent.getStringExtra("serviceType");
-        String idPrestataire = intent.getStringExtra("idPrestataire");
         String infoPrestataire = intent.getStringExtra("info");
+        String idPresta = prefs.getString("idPrestataire", "none");
 
         Glide.with(AnnonceResumeActivity.this).load(R.drawable.spareservicelogomini).into(imageLogo);
 
@@ -76,7 +80,7 @@ public class AnnonceResumeActivity extends AppCompatActivity {
         finaliserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NetworkProvider.getInstance().addMission(annonce.getIdAnnonce(), idPrestataire, client.getIdClient(), annonce.getDebutDate(), annonce.getDebutHeure(), infoPrestataire, false, false, new NetworkProvider.Listener<List<Mission>>() {
+                NetworkProvider.getInstance().addMission(annonce.getIdAnnonce(), idPresta, client.getIdClient(), annonce.getDebutDate(), annonce.getDebutHeure(), infoPrestataire, "false", "false", new NetworkProvider.Listener<List<Mission>>() {
                     @Override
                     public void onSuccess(List<Mission> data) {
 

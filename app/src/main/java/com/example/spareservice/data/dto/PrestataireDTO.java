@@ -14,7 +14,6 @@ public class PrestataireDTO {
     @SerializedName("adresse") private String adresse;
     @SerializedName("ville") private String ville;
     @SerializedName("cp") private String cp;
-    @SerializedName("service") private String service;
 
     public String getIdPrestataire() {
         return idPrestataire;
@@ -88,14 +87,6 @@ public class PrestataireDTO {
         this.tel = tel;
     }
 
-    public String getService() {
-        return service;
-    }
-
-    public void setService(String service) {
-        this.service = service;
-    }
-
     @Override
     public String toString() {
         return "PrestataireDTO{" +
@@ -108,7 +99,6 @@ public class PrestataireDTO {
                 ", adresse='" + adresse + '\'' +
                 ", ville='" + ville + '\'' +
                 ", cp='" + cp + '\'' +
-                ", service='" + service + '\'' +
                 '}';
     }
 }

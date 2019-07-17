@@ -1,13 +1,25 @@
 package com.example.spareservice.data.model;
 
-public class Mission {
+import java.io.Serializable;
+
+public class Mission implements Serializable {
+    private String idMission;
     private String idAnnonce;
     private String idPrestataire;
     private String idClient;
     private String debutDate;
     private String debutHeure;
-    private boolean isValide;
-    private boolean inProcess;
+    private String infoPrestataire;
+    private String isValide;
+    private String inProcess;
+
+    public String getIdMission() {
+        return idMission;
+    }
+
+    public void setIdMission(String idMission) {
+        this.idMission = idMission;
+    }
 
     public String getIdAnnonce() {
         return idAnnonce;
@@ -49,19 +61,27 @@ public class Mission {
         this.debutHeure = debutHeure;
     }
 
-    public boolean isValide() {
+    public String getInfoPrestataire() {
+        return infoPrestataire;
+    }
+
+    public void setInfoPrestataire(String infoPrestataire) {
+        this.infoPrestataire = infoPrestataire;
+    }
+
+    public String getIsValide() {
         return isValide;
     }
 
-    public void setValide(boolean valide) {
-        isValide = valide;
+    public void setIsValide(String isValide) {
+        this.isValide = isValide;
     }
 
-    public boolean isInProcess() {
+    public String getInProcess() {
         return inProcess;
     }
 
-    public void setInProcess(boolean inProcess) {
+    public void setInProcess(String inProcess) {
         this.inProcess = inProcess;
     }
 
@@ -73,8 +93,11 @@ public class Mission {
                 ", idClient='" + idClient + '\'' +
                 ", debutDate='" + debutDate + '\'' +
                 ", debutHeure='" + debutHeure + '\'' +
+                ", infoPrestataire='" + infoPrestataire + '\'' +
                 ", isValide=" + isValide +
                 ", inProcess=" + inProcess +
                 '}';
     }
+
+
 }

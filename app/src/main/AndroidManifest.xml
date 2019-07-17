@@ -11,10 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".views.ProfilActivity"></activity>
+        <activity android:name=".views.MenuActivity" />
+        <activity android:name=".views.ContratActivity" />
+        <activity android:name=".views.MissionDetailActivity" />
+        <activity
+            android:name=".views.MissionActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".views.AnnonceResumeActivity" />
         <activity android:name=".views.AnnonceDetailActivity" />
         <activity android:name=".views.AnnonceActivity" />
-        <activity android:name=".views.AccueilActivity"
+        <activity
+            android:name=".views.AccueilActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".views.InscriptionActivity" />
         <activity android:name=".views.ConnexionActivity" />

@@ -8,14 +8,14 @@
     >
 
     <TextView
-        android:id="@+id/item_annonce_title"
+        android:id="@+id/item_mission_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="25sp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Title"
@@ -23,20 +23,26 @@
 
 
     <TextView
-    android:id="@+id/item_annonce_desc"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
-    android:padding="3dp"
-    android:gravity="center"
-    android:textColor="@android:color/white"
-    android:textSize="12sp"
-    android:layout_marginBottom="5dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    tools:text="desc"
+        android:id="@+id/item_mission_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="3dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="desc"
         />
 
-
+    <ImageView
+        android:id="@+id/item_mission_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
 

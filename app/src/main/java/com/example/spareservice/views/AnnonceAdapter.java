@@ -43,7 +43,7 @@ public class AnnonceAdapter extends RecyclerView.Adapter<AnnonceAdapter.WeaponVi
 
     @Override public void onBindViewHolder (@NonNull WeaponViewHolder weaponViewHolder, int i) {
         Annonce weapon = weaponList.get(i);
-        weaponViewHolder.desc.setText(weapon.getDescriptionAnnonce());
+        weaponViewHolder.desc.setText(weapon.getDetailAnnonce() + "\nLe " + weapon.getDebutDate() + " à " + weapon.getDebutHeure());
         NetworkProvider.getInstance().getService(weapon.getIdService(), new NetworkProvider.Listener<List<Service>>() {
             @Override
             public void onSuccess(List<Service> data) {

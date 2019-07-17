@@ -19,14 +19,15 @@ public class MissionMapper {
 
     private static Mission map(MissionDTO missionDTO) {
         Mission mission = new Mission();
-
+        mission.setIdMission(missionDTO.getIdMission());
         mission.setIdAnnonce(missionDTO.getIdAnnonce());
         mission.setIdPrestataire(missionDTO.getIdPrestataire());
         mission.setIdClient(missionDTO.getIdClient());
         mission.setDebutDate(missionDTO.getDebutDate());
         mission.setDebutHeure(missionDTO.getDebutHeure());
-        mission.setValide(missionDTO.isValide());
-        mission.setInProcess(missionDTO.isInProcess());
+        mission.setInfoPrestataire(missionDTO.getInfoPrestataire());
+        mission.setIsValide(missionDTO.getIsValide());
+        mission.setInProcess(missionDTO.getInProcess());
 
         return mission;
     }

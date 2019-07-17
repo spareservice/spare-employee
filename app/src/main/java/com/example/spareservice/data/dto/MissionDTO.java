@@ -3,13 +3,23 @@ package com.example.spareservice.data.dto;
 import com.google.gson.annotations.SerializedName;
 
 public class MissionDTO {
+    @SerializedName("_id") private String idMission;
     @SerializedName("_idAnnonce") private String idAnnonce;
     @SerializedName("_idPrestataire") private String idPrestataire;
     @SerializedName("_idClient") private String idClient;
     @SerializedName("debutDate") private String debutDate;
     @SerializedName("debutHeure") private String debutHeure;
-    @SerializedName("isValide") private boolean isValide;
-    @SerializedName("inProcess") private boolean inProcess;
+    @SerializedName("infoPrestataire") private String infoPrestataire;
+    @SerializedName("isValide") private String isValide;
+    @SerializedName("inProcess") private String inProcess;
+
+    public String getIdMission() {
+        return idMission;
+    }
+
+    public void setIdMission(String idMission) {
+        this.idMission = idMission;
+    }
 
     public String getIdAnnonce() {
         return idAnnonce;
@@ -51,19 +61,27 @@ public class MissionDTO {
         this.debutHeure = debutHeure;
     }
 
-    public boolean isValide() {
+    public String getInfoPrestataire() {
+        return infoPrestataire;
+    }
+
+    public void setInfoPrestataire(String infoPrestataire) {
+        this.infoPrestataire = infoPrestataire;
+    }
+
+    public String getIsValide() {
         return isValide;
     }
 
-    public void setValide(boolean valide) {
-        isValide = valide;
+    public void setIsValide(String isValide) {
+        this.isValide = isValide;
     }
 
-    public boolean isInProcess() {
+    public String getInProcess() {
         return inProcess;
     }
 
-    public void setInProcess(boolean inProcess) {
+    public void setInProcess(String inProcess) {
         this.inProcess = inProcess;
     }
 
@@ -75,8 +93,12 @@ public class MissionDTO {
                 ", idClient='" + idClient + '\'' +
                 ", debutDate='" + debutDate + '\'' +
                 ", debutHeure='" + debutHeure + '\'' +
-                ", isValide='" + isValide + '\'' +
+                ", infoPrestataire='" + infoPrestataire + '\'' +
+                ", isValide=" + isValide +
                 ", inProcess=" + inProcess +
                 '}';
     }
+
+
+
 }

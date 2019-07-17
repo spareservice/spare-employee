@@ -27,7 +27,6 @@ public class PrestataireMapper {
         annonce.setAdresse(annonceDTO.getAdresse());
         annonce.setCp(annonceDTO.getCp());
         annonce.setVille(annonceDTO.getVille());
-        annonce.setService(annonceDTO.getService());
         return annonce;
     }
 }

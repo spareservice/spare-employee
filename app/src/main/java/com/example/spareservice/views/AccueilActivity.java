@@ -1,6 +1,9 @@
 package com.example.spareservice.views;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,20 +31,21 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AccueilActivity extends AppCompatActivity {
+public class AccueilActivity extends MenuActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
-
-    /*
-    ListView listView;
-    */
     @BindView(R.id.activity_choose_annonce_rcv)
     RecyclerView annonceChoiceRcv;
     @BindView(R.id.activity_accueil_logo_image)
     ImageView imageView;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
     private AnnonceAdapter annonceAdapter;
-    private DrawerLayout drawerLayout;
+
+    private SharedPreferences prefs;
+
 
 
     @Override
@@ -49,32 +54,15 @@ public class AccueilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_accueil);
         ButterKnife.bind(this);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        drawerLayout = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        prefs = this.getSharedPreferences("preferences", this.MODE_PRIVATE);
 
         Glide.with(AccueilActivity.this).load(R.drawable.spareservicelogomini).into(imageView);
 
-        Intent intent = getIntent();
+        String idPresta = prefs.getString("idPrestataire", "none");
 
-        String idPrestataire = intent.getStringExtra("idPrestataire");
-
+        initNavigationView();
         loadData();
-        initRecyclerView(idPrestataire);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        initRecyclerView(idPresta);
     }
 
     private void loadData() {
@@ -83,13 +71,8 @@ public class AccueilActivity extends AppCompatActivity {
                 Log.d("AccueilActivity", data.toString());
                 annonceAdapter.setWeaponList(data);
             }
-
-            @Override public void onError(Throwable t) {
-
-            }
+            @Override public void onError(Throwable t) {}
         });
-
-
     }
 
     private void initRecyclerView(String idPrestataire) {
@@ -98,7 +81,6 @@ public class AccueilActivity extends AppCompatActivity {
         annonceChoiceRcv.setAdapter(annonceAdapter);
 
         annonceAdapter.setItemClickListener(annonce -> {
-            Toast.makeText(AccueilActivity.this, annonce.getDetailAnnonce(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(AccueilActivity.this, AnnonceActivity.class);
                 intent.putExtra("annonce", annonce);
                 NetworkProvider.getInstance().getService(annonce.getIdService(), new NetworkProvider.Listener<List<Service>>() {
@@ -110,12 +92,8 @@ public class AccueilActivity extends AppCompatActivity {
                         NetworkProvider.getInstance().getClient(annonce.getIdClient(), new NetworkProvider.Listener<List<Client>>() {
                             @Override
                             public void onSuccess(List<Client> data) {
-                                Client client = new Client();
-                                client.setIdClient(data.get(0).getIdClient());
-                                client.setNom(data.get(0).getNom());
-                                client.setPrenom(data.get(0).getPrenom());
-                                client.setEmail(data.get(0).getEmail());
-                                client.setTel(data.get(0).getTel());
+                                Client client = new Client(data.get(0).getIdClient(), data.get(0).getNom(),
+                                        data.get(0).getPrenom(), data.get(0).getEmail(), data.get(0).getTel());
                                 intent.putExtra("client", client);
                                 intent.putExtra("idPrestataire", idPrestataire);
                                 startActivity(intent);
@@ -135,6 +113,17 @@ public class AccueilActivity extends AppCompatActivity {
                     }
                 });
         });
+    }
+
+    private void initNavigationView(){
+        setSupportActionBar(toolbar);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
     }
 
 

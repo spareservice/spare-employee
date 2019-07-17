@@ -1,6 +1,7 @@
 package com.example.spareservice.views;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,7 +38,9 @@ public class AnnonceActivity extends AppCompatActivity {
     String serviceNom;
     String serviceType;
     String nomClient;
-    String idPrestataire;
+    String idPresta;
+
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +48,14 @@ public class AnnonceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_annonce);
         ButterKnife.bind(this);
 
+        prefs = this.getSharedPreferences("preferences", this.MODE_PRIVATE);
+
         Glide.with(AnnonceActivity.this).load(R.drawable.spareservicelogomini).into(imageLogo);
 
         Intent intent = getIntent();
         serviceNom = intent.getStringExtra("serviceNom");
         serviceType = intent.getStringExtra("serviceType");
-        idPrestataire = intent.getStringExtra("idPrestataire");
-        Log.d("presta", idPrestataire);
+        idPresta = prefs.getString("idPrestataire", "none");
 
         Gson g = new Gson();
         String str = g.toJson(intent.getSerializableExtra("annonce"));
@@ -77,7 +81,7 @@ public class AnnonceActivity extends AppCompatActivity {
                 intent1.putExtra("client", client);
                 intent1.putExtra("serviceNom", serviceNom);
                 intent1.putExtra("serviceType", serviceType);
-                intent1.putExtra("idPrestataire", idPrestataire);
+                intent1.putExtra("idPrestataire", idPresta);
                 startActivity(intent1);
                 onPause();
             }

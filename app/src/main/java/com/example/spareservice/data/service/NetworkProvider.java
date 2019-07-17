@@ -39,26 +39,11 @@ public class NetworkProvider {
     }
 
     private NetworkProvider() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:3000/")
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         mySpareService = retrofit.create(MySpareService.class);
-    }
-
-    public void allService(Listener<List<Service>> listener) {
-        mySpareService.allService().enqueue(new Callback<List<ServiceDTO>>() {
-            @Override public void onResponse(Call<List<ServiceDTO>> call, Response<List<ServiceDTO>> response) {
-                List<ServiceDTO> annonceDTOList = response.body();
-                List<Service> annonceList = ServiceMapper.map(annonceDTOList);
-
-                listener.onSuccess(annonceList);
-            }
-
-            @Override public void onFailure(Call<List<ServiceDTO>> call, Throwable t) {
-                listener.onError(t);
-            }
-        });
     }
 
     public void getAnnonces(Listener<List<Annonce>> listener) {
@@ -107,8 +92,8 @@ public class NetworkProvider {
         });
     }
 
-    public void addPrestataire(String nom, String prenom, String email, String mdp, String tel, String adresse, String cp, String ville, String service, Listener<List<Prestataire>> listener) {
-        mySpareService.ajoutPrestataire(nom, prenom, email, mdp, tel, adresse, cp, ville, service).enqueue(new Callback<List<PrestataireDTO>>() {
+    public void addPrestataire(String nom, String prenom, String email, String mdp, String tel, String adresse, String cp, String ville, Listener<List<Prestataire>> listener) {
+        mySpareService.ajoutPrestataire(nom, prenom, email, mdp, tel, adresse, cp, ville).enqueue(new Callback<List<PrestataireDTO>>() {
             @Override
             public void onResponse(Call<List<PrestataireDTO>> call, Response<List<PrestataireDTO>> response) {
                 List<PrestataireDTO> prestataireDTOList = response.body();
@@ -124,7 +109,7 @@ public class NetworkProvider {
         });
     }
 
-    public void addMission(String idAnnonce, String idPrestataire, String idClient, String debutDate, String debutHeure, String infoPrestataire, boolean isValide, boolean inProcess, Listener<List<Mission>> listener) {
+    public void addMission(String idAnnonce, String idPrestataire, String idClient, String debutDate, String debutHeure, String infoPrestataire, String isValide, String inProcess, Listener<List<Mission>> listener) {
         mySpareService.ajoutMission(idAnnonce, idPrestataire, idClient, debutDate, debutHeure, infoPrestataire, isValide, inProcess).enqueue(new Callback<List<MissionDTO>>() {
             @Override
             public void onResponse(Call<List<MissionDTO>> call, Response<List<MissionDTO>> response) {
@@ -158,6 +143,107 @@ public class NetworkProvider {
         });
     }
 
+    public void getAllMission(String idPrestataire, Listener<List<Mission>> listener){
+        mySpareService.getAllMission(idPrestataire).enqueue(new Callback<List<MissionDTO>>() {
+            @Override
+            public void onResponse(Call<List<MissionDTO>> call, Response<List<MissionDTO>> response) {
+                List<MissionDTO> missionDTOList = response.body();
+                List<Mission> missionList = MissionMapper.map(missionDTOList);
+
+                listener.onSuccess(missionList);
+            }
+
+            @Override
+            public void onFailure(Call<List<MissionDTO>> call, Throwable t) {
+                listener.onError(t);
+            }
+        });
+    }
+
+    public void getAnnonceById(String idAnnonce, Listener<List<Annonce>> listener) {
+        mySpareService.getAnnonceById(idAnnonce).enqueue(new Callback<List<AnnonceDTO>>() {
+            @Override
+            public void onResponse(Call<List<AnnonceDTO>> call, Response<List<AnnonceDTO>> response) {
+                List<AnnonceDTO> annonceDTOList = response.body();
+                List<Annonce> annonceList = AnnonceMapper.map(annonceDTOList);
+
+                listener.onSuccess(annonceList);
+            }
+
+            @Override
+            public void onFailure(Call<List<AnnonceDTO>> call, Throwable t) {
+                listener.onError(t);
+            }
+        });
+    }
+
+    public void missionChangeInProcess(String idMission, String inProcess, Listener<List<Mission>> listener) {
+        mySpareService.changeMissionInProcess(idMission, inProcess).enqueue(new Callback<List<MissionDTO>>() {
+            @Override
+            public void onResponse(Call<List<MissionDTO>> call, Response<List<MissionDTO>> response) {
+                List<MissionDTO> missionDTOList = response.body();
+                List<Mission> missionList = MissionMapper.map(missionDTOList);
+
+                listener.onSuccess(missionList);
+            }
+
+            @Override
+            public void onFailure(Call<List<MissionDTO>> call, Throwable t) {
+                listener.onError(t);
+            }
+        });
+    }
+
+    public void missionChangeDebutHeure(String idMission, String debutHeure, Listener<List<Mission>> listener) {
+        mySpareService.changeMissionDebutHeure(idMission, debutHeure).enqueue(new Callback<List<MissionDTO>>() {
+            @Override
+            public void onResponse(Call<List<MissionDTO>> call, Response<List<MissionDTO>> response) {
+                List<MissionDTO> missionDTOList = response.body();
+                List<Mission> missionList = MissionMapper.map(missionDTOList);
+
+                listener.onSuccess(missionList);
+            }
+
+            @Override
+            public void onFailure(Call<List<MissionDTO>> call, Throwable t) {
+                listener.onError(t);
+            }
+        });
+    }
+
+    public void missionSetFinHeure(String idMission, String finHeure, String duree, Listener<List<Mission>> listener) {
+        mySpareService.setMissionFinHeure(idMission, finHeure, duree).enqueue(new Callback<List<MissionDTO>>() {
+            @Override
+            public void onResponse(Call<List<MissionDTO>> call, Response<List<MissionDTO>> response) {
+                List<MissionDTO> missionDTOList = response.body();
+                List<Mission> missionList = MissionMapper.map(missionDTOList);
+
+                listener.onSuccess(missionList);
+            }
+
+            @Override
+            public void onFailure(Call<List<MissionDTO>> call, Throwable t) {
+                listener.onError(t);
+            }
+        });
+    }
+
+    public void getPrestataireById(String idPrestataire, Listener<List<Prestataire>> listener) {
+        mySpareService.getPrestataireById(idPrestataire).enqueue(new Callback<List<PrestataireDTO>>() {
+            @Override
+            public void onResponse(Call<List<PrestataireDTO>> call, Response<List<PrestataireDTO>> response) {
+                List<PrestataireDTO> prestataireDTOList = response.body();
+                List<Prestataire> prestataireList = PrestataireMapper.map(prestataireDTOList);
+
+                listener.onSuccess(prestataireList);
+            }
+
+            @Override
+            public void onFailure(Call<List<PrestataireDTO>> call, Throwable t) {
+                listener.onError(t);
+            }
+        });
+    }
 
 
 

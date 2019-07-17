@@ -59,4 +59,15 @@ public class Client implements Serializable {
                 ", tel='" + tel + '\'' +
                 '}';
     }
+
+    public Client() {
+    }
+
+    public Client(String idClient, String nom, String prenom, String email, String tel) {
+        this.idClient = idClient;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.tel = tel;
+    }
 }
